@@ -1,0 +1,7 @@
+== README
+
+* Run bundle
+* Run rake db:create
+* Run rake db:migrate
+* Go to http://localhost:3000/
+* Run **rspec spec** for testing

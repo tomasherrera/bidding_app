@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  budget: 1
+  owned_item_ids: MyText
+  blocked_budget: 1
+
+two:
+  budget: 1
+  owned_item_ids: MyText
+  blocked_budget: 1
