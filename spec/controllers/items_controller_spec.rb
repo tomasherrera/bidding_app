@@ -8,11 +8,11 @@ RSpec.describe ItemsController, type: :controller do
   describe 'POST /add_item.json' do
 
     let!(:user_1) do
-      User.create(id: 1,budget: 1000)
+      User.create(budget: 1000)
     end
 
     it "creates a new item and returns success and item_id" do
-      post :create, format: :json, userId: 1, itemName: "iPhone", startPrice: 600
+      post :create, format: :json, userId: user_1.id, itemName: "iPhone", startPrice: 600
       expect(Item.last.item_name).to eq("iPhone")
       expect(json["result"]).to eq("success")
       expect(json["data"]).to eq(Item.last.id)

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def create
-    @user = User.new(id: params[:userId], budget: params[:budget])
+    @user = User.new(budget: params[:budget])
     if @user.save
       respond_to do |format|
         format.json

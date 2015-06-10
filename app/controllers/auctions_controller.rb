@@ -9,7 +9,11 @@ class AuctionsController < ApplicationController
 
   def bid
     @auction = Auction.find_by_item_id(params[:itemId])
-    @errors = @auction.bid(params[:userId], params[:itemId], params[:amount])
+    unless @auction.nil?
+      @errors = @auction.bid(params[:userId], params[:amount])
+    else
+      @errors = "item not found"
+    end
     respond_to do |format|
       format.json
     end
