@@ -5,16 +5,24 @@ class User < ActiveRecord::Base
   has_many :auctions, dependent: :destroy
 
   def bid_amount(amount)
-    User.transaction do
-      decrement!(:budget, amount)
-      increment!(:blocked_budget, amount)
-    end   
+    begin
+      User.transaction do
+        decrement!(:budget, amount)
+        increment!(:blocked_budget, amount)
+      end   
+    rescue
+      raise "error bidding amount"
+    end
   end
 
   def return_funds(amount)
-    User.transaction do
-      increment!(:budget, amount)
-      decrement!(:blocked_budget, amount)
+    begin
+      User.transaction do
+        increment!(:budget, amount)
+        decrement!(:blocked_budget, amount)
+      end
+    rescue
+      raise "error returning amount"
     end
   end
 
